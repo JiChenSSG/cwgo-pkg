@@ -147,7 +147,7 @@ func TestNacosRegistryDeregister(t *testing.T) {
 // TestNacosMultipleInstancesWithDefaultNacosRegistry use DefaultNacosRegistry to test registry multiple service,then deregister one
 func TestNacosMultipleInstancesWithDefaultNacosRegistry(t *testing.T) {
 	var (
-		svcName     = "MultipleInstances_V2"
+		svcName     = "MultipleInstances"
 		clusterName = "TheCluster"
 		groupName   = "TheGroup"
 	)
@@ -241,12 +241,12 @@ func TestResolverDifferentGroup(t *testing.T) {
 		new(HelloImpl),
 		server.WithRegistry(r),
 		server.WithRegistryInfo(&registry.Info{
-			ServiceName: "demo1",
+			ServiceName: "demo1_v2",
 			Addr:        utils.NewNetAddr("tcp", "127.0.0.1:8081"),
 			Weight:      10,
 			Tags:        nil,
 		}),
-		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: "demo1"}),
+		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: "demo1_v2"}),
 		server.WithServiceAddr(&net.TCPAddr{IP: net.IPv4(127, 0, 0, 1), Port: 8081}),
 	)
 
@@ -254,12 +254,12 @@ func TestResolverDifferentGroup(t *testing.T) {
 		new(HelloImpl),
 		server.WithRegistry(r2),
 		server.WithRegistryInfo(&registry.Info{
-			ServiceName: "demo2",
+			ServiceName: "demo2_v2",
 			Addr:        utils.NewNetAddr("tcp", "127.0.0.1:8082"),
 			Weight:      10,
 			Tags:        nil,
 		}),
-		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: "demo2"}),
+		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: "demo2_v2"}),
 		server.WithServiceAddr(&net.TCPAddr{IP: net.IPv4(127, 0, 0, 1), Port: 8082}),
 	)
 
@@ -279,12 +279,12 @@ func TestResolverDifferentGroup(t *testing.T) {
 	assert.Nil(t, err)
 
 	client1 := hello.MustNewClient(
-		"demo1",
+		"demo1_v2",
 		client.WithResolver(resolver1),
 		client.WithRPCTimeout(time.Second*3),
 	)
 	client2 := hello.MustNewClient(
-		"demo2",
+		"demo2_v2",
 		client.WithResolver(resolver2),
 		client.WithRPCTimeout(time.Second*3),
 	)

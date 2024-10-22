@@ -2,7 +2,9 @@ TOOLS_SHELL="./hack/tools.sh"
 
 .PHONY: test
 test:
-	go test -race -covermode=atomic -coverprofile=coverage.txt ./registry/nacos/nacoskitex/v2/...
+	chmod +x ${TOOLS_SHELL}
+	@${TOOLS_SHELL} test
+	@echo "go test finished"
 
 
 

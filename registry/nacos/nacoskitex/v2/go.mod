@@ -4,6 +4,7 @@ go 1.21
 
 require (
 	github.com/apache/thrift v0.20.0
+	github.com/cloudwego-contrib/cwgo-pkg/registry/nacos/options v0.0.0-00010101000000-000000000000
 	github.com/cloudwego/kitex v0.11.0
 	github.com/nacos-group/nacos-sdk-go/v2 v2.2.7
 	github.com/stretchr/testify v1.9.0
@@ -76,3 +77,5 @@ require (
 replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
 
 replace github.com/nacos-group/nacos-sdk-go/v2 => github.com/nacos-group/nacos-sdk-go/v2 v2.2.0
+
+replace github.com/cloudwego-contrib/cwgo-pkg/registry/nacos/options => github.com/smx-Morgan/cwgo-pkg/registry/nacos/options v0.0.0-20241022073704-d890c90bd175
